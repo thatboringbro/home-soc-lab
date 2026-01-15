@@ -14,7 +14,7 @@
 
 Networking, attack simulation, and log analysis will be added incrementally.
 
-> See `/screenshots/day1-infra/ for validation evidence.
+> See `/screenshots/day1-infra/` for validation evidence.
 
 ## Day 2 – Internal Network Configuration
 
