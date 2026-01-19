@@ -31,3 +31,37 @@ Networking, attack simulation, and log analysis will be added incrementally.
 This establishes a controlled lateral-movement and monitoring environment for future attack simulations and log collection.
 
 > See `/screenshots/day2-internal-network/` for validation evidence.
+
+## Day 3 – Splunk SIEM Deployment & Log Ingestion
+
+- Installed Splunk Enterprise on Ubuntu Server (SIEM node)
+- Accepted license and initialized Splunk services
+- Resolved service startup issues related to privileged execution
+- Enabled TCP data receiving on port **9997**
+- Verified Splunk web interface accessibility
+
+- Installed Splunk Universal Forwarder on Windows 10 endpoint
+- Configured forwarder to send telemetry to Ubuntu SIEM
+- Validated active forwarding connection between Windows and Ubuntu
+
+- Identified and resolved indexing failures caused by:
+  - Insufficient disk allocation
+  - Missing input definitions
+
+- Created and configured `inputs.conf` on the Windows forwarder to collect:
+  - Application logs  
+  - Security logs  
+  - System logs  
+
+- Restarted forwarder services and confirmed successful event ingestion
+
+- Validated SIEM pipeline by:
+  - Searching Windows event logs in Splunk
+  - Detecting a failed authentication event (Event ID 4625)
+  - Simulated an authentication failure on the Windows endpoint to validate security event ingestion and detection capability
+  - Successfully observed and analyzed Event ID **4625 (Failed Logon)** in the SIEM
+  - Confirming host attribution and index population
+
+This establishes the core SIEM telemetry pipeline for the SOC lab and enables future detection engineering and attack simulation.
+
+> See `/screenshots/day3-splunk-installation-ubuntu/` for validation evidence.
