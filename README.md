@@ -1,6 +1,6 @@
 ## Lab Setup Progress
 
-### Day 1 – Infrastructure Setup
+### Infrastructure Setup
 
 - Installed and configured 4 virtual machines:
   - Ubuntu Server (SIEM)
@@ -16,7 +16,7 @@ Networking, attack simulation, and log analysis will be added incrementally.
 
 > See `/screenshots/day1-infra/` for validation evidence.
 
-## Day 2 – Internal Network Configuration
+## Internal Network Configuration
 
 - Created an isolated internal network for the SOC lab environment
 - Assigned static IP addresses on a dedicated subnet (10.10.10.0/24)
@@ -32,7 +32,7 @@ This establishes a controlled lateral-movement and monitoring environment for fu
 
 > See `/screenshots/day2-internal-network/` for validation evidence.
 
-## Day 3 – Splunk SIEM Deployment & Log Ingestion
+## Splunk SIEM Deployment & Log Ingestion
 
 - Installed Splunk Enterprise on Ubuntu Server (SIEM node)
 - Accepted license and initialized Splunk services
