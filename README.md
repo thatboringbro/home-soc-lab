@@ -65,3 +65,20 @@ This establishes a controlled lateral-movement and monitoring environment for fu
 This establishes the core SIEM telemetry pipeline for the SOC lab and enables future detection engineering and attack simulation.
 
 > See `/screenshots/day3-splunk-installation-ubuntu/` for validation evidence.
+
+## Advanced Telemetry & Service Hardening
+Enhanced endpoint visibility beyond standard Windows logs to detect sophisticated techniques.
+
+* **Sysmon Deployment:**
+    * Installed Sysmon on Windows 10 Endpoint to capture granular process and network telemetry.
+    * Applied the **SwiftOnSecurity** configuration profile to filter noise and prioritize high-value security events.
+* **Service Configuration:**
+    * Reconfigured the Splunk Universal Forwarder service to execute as a specific **Local User** rather than Local System.
+    * Validated service stability and persistence across reboots.
+* **Ingestion Verification:**
+    * Confirmed Sysmon event indexing in Splunk.
+    * Validated visibility of advanced fields (ParentProcessID, CommandLine, Hashes) on the dashboard.
+    * Telemetry pipeline is active with Sysmon enrichment.
+
+See /screenshots/day4-sysmon-telemetry/ for validation evidence.
+
