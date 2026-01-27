@@ -80,5 +80,5 @@ Enhanced endpoint visibility beyond standard Windows logs to detect sophisticate
     * Validated visibility of advanced fields (ParentProcessID, CommandLine, Hashes) on the dashboard.
     * Telemetry pipeline is active with Sysmon enrichment.
 
-See /screenshots/day4-sysmon-telemetry/ for validation evidence.
+> See /screenshots/day4-sysmon-telemetry/ for validation evidence.
 
