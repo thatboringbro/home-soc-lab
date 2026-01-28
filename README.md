@@ -8,7 +8,7 @@
   - Windows 10 (modern endpoint)
   - Kali Linux (attacker)
     
-- Allocated VM resources based on host hardware constraints
+- Allocated VM resources based on host hardware constraints to ensure stability on a 16GB RAM host
 - Took clean baseline snapshots of Windows VMs
 - Designed lab with attack simulation and telemetry collection in mind
 
@@ -82,3 +82,31 @@ Enhanced endpoint visibility beyond standard Windows logs to detect sophisticate
 
 > See `/screenshots/day4-sysmon-telemetry/` for validation evidence.
 
+## Endpoint Optimization & Linux Ingestion
+Streamlined lab performance and expanded telemetry to include Linux-based workloads.
+
+* **Performance Tuning:**
+    * Leveraged the CTT Windows Utility to disable non-essential services (Windows Update, Search Indexing) on the Windows 10 node.
+    * Successfully reduced idle RAM consumption, ensuring a stable baseline for multi-VM execution on a 16GB host.
+* **Linux Log Ingestion:**
+    * Installed the Splunk Universal Forwarder on the Ubuntu MATE endpoint.
+    * Configured monitoring for `auth.log` and `audit.log` via `auditd` to capture deep system-level syscalls and authentication events.
+* **Validation:**
+    * Verified persistent data forwarding after system-wide service hardening on both Linux and Windows nodes.
+
+> See `/screenshots/day5-linux-ingestion/` for validation evidence.
+
+## Adversary Emulation & Linux Attack Validation
+Transitioned to active security testing using custom automation to validate the SOC pipeline.
+
+* **Custom Attack Scripting:**
+    * Developed a lightweight Python utility utilizing the `subprocess` module to simulate automated SSH brute-force attacks.
+    * Designed the script to run natively on the SIEM node without third-party libraries to minimize the performance footprint.
+* **Simulation Execution:**
+    * Conducted a successful brute-force simulation using `sshpass` from the SIEM node against the monitored Linux endpoint.
+    * Validated that the attack generated real-time telemetry including `USER_LOGIN` and `CRED_DISP` events.
+* **Detection Success:**
+    * Performed manual field analysis in Splunk to attribute malicious activity to the attacker source IP (10.10.10.10).
+    * Successfully captured and analyzed `res=success` events, confirming the SIEM's visibility into lateral movement and brute-force entry.
+
+> See `/screenshots/day6-attack-simulation/` for validation evidence.
