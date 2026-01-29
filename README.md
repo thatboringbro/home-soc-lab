@@ -103,7 +103,7 @@ Transitioned to active security testing using custom automation to validate the 
     * Developed a lightweight Python utility utilizing the `subprocess` module to simulate automated SSH brute-force attacks.
     * Designed the script to run natively on the SIEM node without third-party libraries to minimize the performance footprint.
 
-> See `/scripts/sssh-bruteforce-sim.py`
+> See `/scripts/ssh-bruteforce-sim.py`
 
 * **Simulation Execution:**
     * Conducted a successful brute-force simulation using `sshpass` from the SIEM node against the monitored Linux endpoint.
