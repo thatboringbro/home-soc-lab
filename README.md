@@ -111,5 +111,11 @@ Transitioned to active security testing using custom automation to validate the 
 * **Detection Success:**
     * Performed manual field analysis in Splunk to attribute malicious activity to the attacker source IP (10.10.10.10).
     * Successfully captured and analyzed `res=success` events, confirming the SIEM's visibility into lateral movement and brute-force entry.
+* **Kernel-Level Auditing**:
+    * Identified that default `auditd` configurations lacked granular process execution telemetry.
+* **Rule Implementation**:
+    * Deployed a universal `execve` syscall monitor (`-a always,exit -F arch=b64 -S execve -k user_commands`) to capture all command-line activity across all user contexts (root, local users, etc.).
+* **Validation**:
+    * Verified visibility by successfully querying the execution of `whoami` and custom scripts via `ausearch`.
 
 > See `/screenshots/day6-attack-simulation/` for validation evidence.
