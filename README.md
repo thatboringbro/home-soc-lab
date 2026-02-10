@@ -1,3 +1,5 @@
+X (Twitter) : [x.com/@thatboringbro](https://x.com/thatboringbro)
+
 ## Lab Setup Progress
 
 ### Infrastructure Setup
@@ -96,26 +98,11 @@ Streamlined lab performance and expanded telemetry to include Linux-based worklo
 
 > See `/screenshots/day5-linux-ingestion/` for validation evidence.
 
-## Adversary Emulation & Linux Attack Validation
-Transitioned to active security testing using custom automation to validate the SOC pipeline.
+## 🚀 Detection Research & Lab Validation
 
-* **Custom Attack Scripting:**
-    * Developed a lightweight Python utility utilizing the `subprocess` module to simulate automated SSH brute-force attacks.
-    * Designed the script to run natively on the SIEM node without third-party libraries to minimize the performance footprint.
+This infrastructure serves as a live environment for simulating adversary TTPs and engineering custom detections. For detailed investigations, attack scripts, and forensic write-ups, see the specialized project repositories below:
 
-> See `/scripts/ssh-bruteforce-sim.py`
-
-* **Simulation Execution:**
-    * Conducted a successful brute-force simulation using `sshpass` from the SIEM node against the monitored Linux endpoint.
-    * Validated that the attack generated real-time telemetry including `USER_LOGIN` and `CRED_DISP` events.
-* **Detection Success:**
-    * Performed manual field analysis in Splunk to attribute malicious activity to the attacker source IP (10.10.10.10).
-    * Successfully captured and analyzed `res=success` events, confirming the SIEM's visibility into lateral movement and brute-force entry.
-* **Kernel-Level Auditing**:
-    * Identified that default `auditd` configurations lacked granular process execution telemetry.
-* **Rule Implementation**:
-    * Deployed a universal `execve` syscall monitor (`-a always,exit -F arch=b64 -S execve -k user_commands`) to capture all command-line activity across all user contexts (root, local users, etc.).
-* **Validation**:
-    * Verified visibility by successfully querying the execution of `whoami` and custom scripts via `ausearch`.
-
-> See `/screenshots/day6-attack-simulation/` for validation evidence.
+* **[Case Study: Linux SSH Brute-Force Detection](https://github.com/thatboringbro/Detection-Engineering-SSH-Brute-Force)**:
+  
+    * An end-to-end investigation into automated credential stuffing, featuring custom Python adversary emulation and `auditd` kernel-level syscall monitoring.
+      
